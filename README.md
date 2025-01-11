@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Aliatech
 
 This template should help get you started developing with Vue 3 in Vite.
@@ -27,3 +28,7 @@ npm run dev
 ```sh
 npm run build
 ```
+=======
+# aliatech
+form manager
+>>>>>>> cac0be70637d7eacd0bd7a1a47f319527db1c24b
