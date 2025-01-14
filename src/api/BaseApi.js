@@ -1,3 +1,4 @@
+import { toast } from "vue-sonner";
 export class BaseApi {
   constructor(baseURL = "/main/main/") {
     this.baseURL = baseURL;
@@ -57,12 +58,16 @@ export class BaseApi {
   // Main request method with interceptor for 403 status
   async request(url, options = {}) {
     const token = localStorage.getItem("access_token"); // Get access token from storage
-
-    // Set Authorization header
     options.headers = {
-      ...options.headers,
-      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
     };
+    // Set Authorization header
+    if (url !== "signup" && token) {
+      options.headers = {
+        ...options.headers,
+        Authorization: `Bearer ${token}`,
+      };
+    }
 
     try {
       const response = await fetch(this.baseURL + url, options);
@@ -93,10 +98,20 @@ export class BaseApi {
       // If no error, parse and return the response
       const result = await response.json();
       if (!response.ok || !result.ok) {
-        const error = result?.data || "An error occurred";
+        const error = result?.error?.detail || "An error occurred";
+        if (error == "IncorrectPassword") {
+          console.log(error == "IncorrectPassword");
+          toast.error("رمز عبور وارد شده اشتباه است!");
+        }
+
         throw new Error(error);
       }
 
+      if (url == "signup" && result?.data?.access && result?.data?.refresh) {
+        const { refresh, access } = result.data;
+        localStorage.access_token = access;
+        localStorage.refresh_token = refresh;
+      }
       return result.data; // Return the actual data from the response
     } catch (error) {
       throw error;

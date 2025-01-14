@@ -6,7 +6,7 @@ defineProps({
 </script>
 <template>
   <div
-    class="bg-white rounded-xl shadow-lg"
+    class="bg-white rounded-xl shadow-lg p-8"
     :style="{ width: width, height: height }"
   >
     <slot></slot>

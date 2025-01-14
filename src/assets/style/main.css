@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: iransans;
+    src: '@/assets/font/IRANSansWeb(FaNum).woff2';
+}
+
+
+body {
+    font-family: iransans;
+}

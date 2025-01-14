@@ -1,6 +1,6 @@
 <script setup></script>
 <template>
-  <form @submit.prevent="$emit('submit')">
+  <form >
     <slot></slot>
   </form>
 </template>
