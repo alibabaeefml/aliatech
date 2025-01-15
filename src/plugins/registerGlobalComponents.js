@@ -1,4 +1,5 @@
 import AppBtn from "@/components/global/button/AppBtn.vue";
+import AppIconBtn from "@/components/global/button/AppIconBtn.vue";
 import AppCard from "@/components/global/card/AppCard.vue";
 import AppForm from "@/components/global/form/AppForm.vue";
 import AppTextField from "@/components/global/form/AppTextField.vue";
@@ -12,4 +13,5 @@ export default function registerGlobalComponents(app) {
   app.component("app-btn", AppBtn);
   app.component("app-title", AppTitle);
   app.component("app-icon", AppIcon);
+  app.component("app-icon-btn", AppIconBtn);
 }

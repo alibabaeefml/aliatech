@@ -1,8 +1,14 @@
+<script setup lang="ts">
+import TheAppbar from "./TheAppbar.vue";
+</script>
+
 <template>
   <main
     class="bg-background-white flex items-center justify-center w-screen h-screen"
     dir="rtl"
   >
-    <router-view></router-view>
+    <div class="w-5/6 mx-auto">
+      <router-view></router-view>
+    </div>
   </main>
 </template>

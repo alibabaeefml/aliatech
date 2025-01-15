@@ -24,7 +24,12 @@ const model = computed({
   },
 });
 const inputRef = ref();
+const currentType = ref(props.type);
 
+const togglePasswordVisibility = () =>
+  (currentType.value = currentType.value == "password" ? "text" : "password");
+
+const showPassword = computed(() => currentType.value == "text");
 watch(inputRef, () => {
   if (props.autoFocus) {
     inputRef.value.focus();
@@ -41,14 +46,26 @@ watch(inputRef, () => {
       class="absolute mt-5 m-3"
     />
     <input
-      :type="type"
+      :type="currentType"
       :name="name"
       :id="id"
       ref="inputRef"
       :placeholder="placeholder"
       v-model="model"
-      class="mt-2 border bg-neutral-100 w-full p-2 rounded-xl pr-10"
+      :class="[prependIcon && 'pr-10', type == 'password' && 'pl-10']"
+      class="mt-2 border bg-neutral-100 w-full p-3 rounded-xl text-sm"
     />
-    <p class="text-red-500 text-xs mt-2" v-if="errorMessage">{{ errorMessage }}</p>
+    <app-icon-btn
+      @click="togglePasswordVisibility"
+      v-if="type == 'password'"
+      :icon="showPassword ? 'Eye' : 'EyeOff'"
+      class="absolute top-8 left-2"
+      size="16"
+      :key="showPassword"
+    >
+    </app-icon-btn>
+    <p class="text-red-500 text-xs mt-2" v-if="errorMessage">
+      {{ errorMessage }}
+    </p>
   </label>
 </template>

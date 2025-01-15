@@ -1,4 +1,4 @@
-import { toast } from "vue-sonner";
+import useApiMessage from "@/composable/apiMessage";
 export class BaseApi {
   constructor(baseURL = "/main/main/") {
     this.baseURL = baseURL;
@@ -10,11 +10,12 @@ export class BaseApi {
   async refreshToken() {
     try {
       const response = await fetch(
-        "refresh?token=" + localStorage.getItem("refresh_token"),
+        this.baseURL + "refresh?token=" + localStorage.getItem("refresh_token"),
         {
           headers: {
             "Content-Type": "application/json",
           },
+          method: "POST",
         }
       );
 
@@ -72,6 +73,14 @@ export class BaseApi {
     try {
       const response = await fetch(this.baseURL + url, options);
 
+      if (response.status === 401) {
+        localStorage.setItem("access_token", null);
+        localStorage.setItem("refresh_token", null);
+        setTimeout(() => {
+          window.location.assign("/auth");
+        }, 700);
+        throw "Unable to refresh token. Please log in again.";
+      }
       // If 403 - Token might be expired
       if (response.status === 403) {
         if (!this.isRefreshing) {
@@ -81,11 +90,16 @@ export class BaseApi {
           if (newToken) {
             // Retry the failed request
             this.processQueue(null, newToken);
+            // Update the Authorization header with the new token
+            options.headers.Authorization = `Bearer ${newToken}`;
 
-            // Retry the original request
+            // Retry the original request with updated options
             return await this.retryRequest({ url, options });
           } else {
-            throw new Error("Unable to refresh token. Please log in again.");
+            // localStorage.setItem("access_token", null);
+            // localStorage.setItem("refresh_token", null);
+            window.location.assign("/auth");
+            throw "Unable to refresh token. Please log in again.";
           }
         }
 
@@ -99,12 +113,8 @@ export class BaseApi {
       const result = await response.json();
       if (!response.ok || !result.ok) {
         const error = result?.error?.detail || "An error occurred";
-        if (error == "IncorrectPassword") {
-          console.log(error == "IncorrectPassword");
-          toast.error("رمز عبور وارد شده اشتباه است!");
-        }
 
-        throw new Error(error);
+        throw error;
       }
 
       if (url == "signup" && result?.data?.access && result?.data?.refresh) {
@@ -114,6 +124,10 @@ export class BaseApi {
       }
       return result.data; // Return the actual data from the response
     } catch (error) {
+      console.log(error);
+
+      useApiMessage(error);
+
       throw error;
     }
   }

@@ -11,7 +11,7 @@ const {
 } = useAuth();
 </script>
 <template>
-  <div class="w-max">
+  <div class="w-max mx-auto">
     <app-card>
       <app-title title="خوش آمدید" />
       <p class="mt-2 text-sm text-neutral-700">

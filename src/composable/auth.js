@@ -54,16 +54,23 @@ export function useAuth() {
   });
 
   const signup = async () => {
+    if (isSubmitDisabled.value) return;
     try {
       loading.value = true;
       await authRepository.signup(form.value);
       router.push({ name: "forms" });
     } catch (error) {
-        console.log(error);
+      console.log(error);
     } finally {
       loading.value = false;
     }
   };
+
+  function logout() {
+    localStorage.setItem("access_token", null);
+    localStorage.setItem("refresh_token", null);
+    router.push({ name: "auth" });
+  }
 
   return {
     form,
@@ -72,5 +79,6 @@ export function useAuth() {
     isSubmitDisabled,
     signup,
     loading,
+    logout,
   };
 }

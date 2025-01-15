@@ -5,7 +5,7 @@ import { Toaster } from "vue-sonner";
 
 <template>
   <DefaultLayout />
-  <Toaster />
+  <Toaster dir="rtl" />
 </template>
 
 <style scoped></style>
