@@ -10,6 +10,7 @@ const props = defineProps({
   placeholder: { type: String, required: false },
   errorMessage: { type: String, required: false },
   rows: { type: [String, Number], required: false },
+  disabled: { type: Boolean, required: false },
 });
 
 const emits = defineEmits(["update:modelValue"]);
@@ -43,6 +44,8 @@ watch(textAreaRef, () => {
       :rows="rows"
       :placeholder="placeholder"
       class="mt-2 border bg-neutral-100 w-full p-3 rounded-xl text-sm resize-none"
+      :class="[disabled && 'bg-neutral-200']"
+      :disabled="disabled"
     />
     <p class="text-red-500 text-xs mt-2" v-if="errorMessage">
       {{ errorMessage }}

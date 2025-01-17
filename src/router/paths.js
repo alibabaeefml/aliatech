@@ -26,7 +26,7 @@ export default [
     },
   },
   {
-    path: "/update-form",
+    path: "/update-form/:id",
     name: "updateForm",
     component: () => import("../views/CreateUpdateForm.vue"),
     meta: {

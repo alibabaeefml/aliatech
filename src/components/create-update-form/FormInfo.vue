@@ -20,6 +20,7 @@ const { form, formTypes } = useForm();
         title="دسته بندی"
         :options="formTypes"
         v-model="form.form_type"
+        :disabled="$route.name == 'updateForm'"
       />
     </div>
     <app-textarea

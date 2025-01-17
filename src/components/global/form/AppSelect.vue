@@ -11,6 +11,7 @@ const props = defineProps({
     default: null,
   },
   title: { type: String, required: false },
+  disabled: { type: Boolean, required: false },
 });
 
 const emit = defineEmits(["update:modelValue"]);
@@ -88,6 +89,7 @@ function handleFocus() {
     @keydown="handleKeyDown"
     @focus="handleFocus"
     @focusout="handleFocusOut"
+    :class="[disabled && 'pointer-events-none']"
   >
     <p class="text-xs cursor-pointer" @click="toggleDropdown" v-if="title">
       {{ title }}
@@ -96,6 +98,7 @@ function handleFocus() {
     <div
       class="mt-2 flex justify-between items-center bg-white p-2 border border-gray-300 rounded-xl cursor-pointer focus:outline focus:outline-blue-500"
       @click="toggleDropdown"
+      :class="[disabled && 'bg-neutral-200']"
     >
       <span>{{ selectedTitle() }}</span>
 

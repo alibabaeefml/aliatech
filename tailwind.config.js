@@ -9,7 +9,7 @@ export default {
         },
         neutral: {
           100: "#fdfdfd", // Light gray (background)
-          200: "#c2c2c2", // Disabled form elements
+          200: "#ebebeb", // Disabled form elements
           300: "#c2c2c2", // Darker gray (placeholders, ...)
           900: "#1A1A1A", // Dark text (fallback or secondary black)
         },

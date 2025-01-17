@@ -10,15 +10,15 @@ export class MainRepository extends BaseApi {
   }
 
   getForm(id) {
-    return this.get(`form`, { id });
+    return this.get(`form?form_id=` + id);
   }
 
   updateForm(id, data) {
-    return this.put(`form`, { id, ...data });
+    return this.put(`form?form_id=` + id, { ...data });
   }
 
   deleteForm(id) {
-    return this.delete(`form?id=${id}`);
+    return this.delete(`form?form_id=${id}`);
   }
 
   getForms(params) {

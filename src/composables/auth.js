@@ -3,7 +3,7 @@ import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
 import { toast } from "vue-sonner";
 export function useAuth() {
-  const form = ref({ email: null, password: null });
+  const form = ref({ email: 'test@test.com', password: '@aB12345678' });
   const loading = ref();
   const authRepository = useRepository("auth");
   const router = useRouter();
@@ -58,6 +58,7 @@ export function useAuth() {
     try {
       loading.value = true;
       await authRepository.signup(form.value);
+
       router.push({ name: "forms" });
     } catch (error) {
       console.log(error);

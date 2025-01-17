@@ -11,6 +11,7 @@ const props = defineProps({
   prependIcon: { type: String, required: false },
   placeholder: { type: String, required: false },
   errorMessage: { type: String, required: false },
+  disabled: { type: Boolean, required: false },
 });
 
 const emits = defineEmits(["update:modelValue"]);
@@ -52,8 +53,13 @@ watch(inputRef, () => {
       ref="inputRef"
       :placeholder="placeholder"
       v-model="model"
-      :class="[prependIcon && 'pr-10', type == 'password' && 'pl-10']"
+      :class="[
+        prependIcon && 'pr-10',
+        type == 'password' && 'pl-10',
+        disabled && 'bg-neutral-200',
+      ]"
       class="mt-2 border bg-neutral-100 w-full p-3 rounded-xl text-sm"
+      :disabled="disabled"
     />
     <app-icon-btn
       @click="togglePasswordVisibility"
