@@ -2,6 +2,7 @@
 import useForm from "@/composables/form";
 import FormFieldActions from "./FormFieldActions.vue";
 import { reactive, ref } from "vue";
+import FormFieldProperties from "./FormFieldProperties.vue";
 
 const props = defineProps({
   item: { type: Object, required: true },
@@ -16,7 +17,7 @@ const { sectionTypes } = useForm();
 //       ]
 </script>
 <template>
-  <app-card class="h-max mt-4">
+  <app-card class="h-max mt-4 relative z-50">
     <div class="flex items-center justify-between">
       <div class="flex gap-2">
         <app-textfield
@@ -32,5 +33,6 @@ const { sectionTypes } = useForm();
       </div>
       <FormFieldActions :item="item" />
     </div>
+    <FormFieldProperties :item="item" />
   </app-card>
 </template>

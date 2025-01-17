@@ -5,6 +5,10 @@ const props = defineProps({
     type: [String, Number],
     default: "16",
   },
+  color: {
+    type: String,
+    default: "black",
+  },
   disabled: { type: Boolean, required: false },
 });
 </script>
@@ -15,6 +19,6 @@ const props = defineProps({
     :class="[disabled && 'opacity-20 bg-primary/10']"
     :disabled="disabled"
   >
-    <app-icon :name="icon" :size="size" />
+    <app-icon :name="icon" :size="size" :color="color" />
   </button>
 </template>

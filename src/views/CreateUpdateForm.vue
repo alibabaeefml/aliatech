@@ -71,7 +71,7 @@ onUnmounted(() => {
       <transition-group name="list" tag="ul" v-if="form.sections.length">
         <FormField
           v-for="item in form.sections"
-          :key="item.id"
+          :key="item"
           :item="item"
           v-motion
           :initial="{ opacity: 0, y: 10 }"

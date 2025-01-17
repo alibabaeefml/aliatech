@@ -9,7 +9,7 @@ export default function useApiMessage(message) {
       toast.error("نشست شما منقضی شده است!");
       break;
     case "An error occurred":
-      toast.error("خطایی رخ داده اس!");
+      toast.error("خطایی رخ داده است!");
       break;
 
     default:

@@ -98,7 +98,7 @@ function handleFocus() {
     <div
       class="mt-2 flex justify-between items-center bg-white p-2 border border-gray-300 rounded-xl cursor-pointer focus:outline focus:outline-blue-500"
       @click="toggleDropdown"
-      :class="[disabled && 'bg-neutral-200']"
+      :class="[disabled && 'bg-neutral-300']"
     >
       <span>{{ selectedTitle() }}</span>
 
@@ -127,28 +127,3 @@ function handleFocus() {
     </div>
   </div>
 </template>
-
-<style scoped>
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-/* Scrollbar Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-/* Scrollbar Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 10px;
-}
-
-/* Scrollbar Handle on Hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-</style>

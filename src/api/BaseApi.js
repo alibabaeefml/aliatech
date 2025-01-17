@@ -39,7 +39,7 @@ export class BaseApi {
       return result.data;
     } catch (error) {
       useApiMessage(error);
-      return error;
+      throw error;
     }
   }
 

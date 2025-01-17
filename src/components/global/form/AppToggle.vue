@@ -1,3 +1,10 @@
+<script setup>
+defineProps({
+  modelValue: { type: Boolean, required: true },
+});
+defineEmits(["update:modelValue"]);
+</script>
+
 <template>
   <label class="relative flex items-center cursor-pointer w-10 h-6">
     <!-- Hidden Checkbox -->
@@ -26,10 +33,3 @@
     </div>
   </label>
 </template>
-
-<script setup>
-defineProps({
-  modelValue: Boolean,
-});
-defineEmits(["update:modelValue"]);
-</script>

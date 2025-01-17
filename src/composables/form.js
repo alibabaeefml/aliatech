@@ -36,6 +36,8 @@ export default function useForm() {
         return true;
       case !form.form_type:
         return true;
+      case !form.description:
+        return true;
 
       default:
         return false;
@@ -66,7 +68,7 @@ export default function useForm() {
       id,
       title: null,
       type: null,
-      required: null,
+      required: false,
       properties: [],
     });
   }
@@ -128,6 +130,9 @@ export default function useForm() {
         form.form_type = res.form_type;
         form.description = res.description;
         form.sections = res.sections;
+        if (form.sections.length) {
+          form.sections.map((section) => (section.id = useRandomId()));
+        }
       }
     } catch (error) {
       console.error(error);
