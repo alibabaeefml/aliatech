@@ -1,4 +1,4 @@
-import useApiMessage from "@/composable/apiMessage";
+import useApiMessage from "@/composables/apiMessage";
 export class BaseApi {
   constructor(baseURL = "/main/main/") {
     this.baseURL = baseURL;

@@ -1,22 +1,33 @@
 <script setup>
-import useForm from "@/composable/form";
-import AppSelect from "../global/form/AppSelect.vue";
+import useForm from "@/composables/form";
 
 const props = defineProps({});
 
-const { form } = useForm();
+const { form, formTypes } = useForm();
 </script>
 <template>
   <app-card height="300px">
-    <app-textfield
-      title="نام فرم"
-      v-model="form.name"
-      placeholder="یک عنوان برای این فرم"
-    ></app-textfield>
-    <AppSelect
+    <div class="flex gap-2">
+      <app-textfield
+        class="w-64"
+        title="نام فرم"
+        v-model="form.form_title"
+        placeholder="یک عنوان برای این فرم"
+        auto-focus="true"
+      ></app-textfield>
+      <app-select
+        class="w-64"
+        title="دسته بندی"
+        :options="formTypes"
+        v-model="form.form_type"
+      />
+    </div>
+    <app-textarea
+      v-model="form.description"
+      title="توضیخات فرم"
+      placeholder="توضیحاتی در مورد این فرم"
       class="mt-4"
-      :options="['عمومی', 'خصوصی']"
-      v-model="form.category"
+      rows="7"
     />
   </app-card>
 </template>

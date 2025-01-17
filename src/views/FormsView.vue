@@ -2,7 +2,7 @@
 import FormItem from "@/components/forms/FormItem.vue";
 import NoForm from "@/components/forms/NoForm.vue";
 import TheAppbar from "@/components/global/layout/TheAppbar.vue";
-import useForms from "@/composable/forms";
+import useForms from "@/composables/forms";
 import { onMounted } from "vue";
 
 const { forms, getForms } = useForms();

@@ -1,10 +1,8 @@
-<script setup lang="ts">
-import TheAppbar from "./TheAppbar.vue";
-</script>
+<script setup></script>
 
 <template>
   <main
-    class="bg-background-white flex items-center justify-center w-screen h-screen"
+    class="bg-background-white flex items-center justify-center w-full min-h-screen py-10"
     dir="rtl"
   >
     <div class="w-5/6 mx-auto">

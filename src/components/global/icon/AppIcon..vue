@@ -1,6 +1,3 @@
-<template>
-    <component :is="iconName" :style="iconStyle"  />
-</template>
 
 <script setup>
 import { defineProps, computed, defineAsyncComponent } from "vue";
@@ -38,3 +35,8 @@ const iconStyle = computed(() => {
   };
 });
 </script>
+
+
+<template>
+    <component :is="iconName" :style="iconStyle"  />
+</template>

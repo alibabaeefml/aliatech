@@ -13,6 +13,7 @@ export default [
     component: () => import("../views/FormsView.vue"),
     meta: {
       title: "فرم ها",
+      auth: true,
     },
   },
   {
@@ -21,6 +22,7 @@ export default [
     component: () => import("../views/CreateUpdateForm.vue"),
     meta: {
       title: "ساخت فرم",
+      auth: true,
     },
   },
   {
@@ -29,6 +31,7 @@ export default [
     component: () => import("../views/CreateUpdateForm.vue"),
     meta: {
       title: "ویرایش فرم",
+      auth: true,
     },
   },
 ];

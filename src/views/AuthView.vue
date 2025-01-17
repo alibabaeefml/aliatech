@@ -1,5 +1,5 @@
 <script setup>
-import { useAuth } from "@/composable/auth";
+import { useAuth } from "@/composables/auth";
 
 const {
   isSubmitDisabled,

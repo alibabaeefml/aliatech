@@ -3,9 +3,9 @@ import { computed, ref, watch } from "vue";
 
 const props = defineProps({
   modelValue: { type: [String, Number, null], required: true },
-  title: { type: String, required: true },
+  title: { type: String, required: false },
   type: { type: String, default: "text", required: false },
-  autoFocus: { type: Boolean, default: false, required: false },
+  autoFocus: { type: [Boolean, String], default: false, required: false },
   name: { type: String, required: false },
   id: { type: String, required: false },
   prependIcon: { type: String, required: false },
@@ -37,8 +37,8 @@ watch(inputRef, () => {
 });
 </script>
 <template>
-  <label class="relative">
-    <p class="text-xs">{{ title }}</p>
+  <label class="relative block">
+    <p class="text-xs" v-if="title">{{ title }}</p>
     <app-icon
       v-if="prependIcon"
       :name="prependIcon"
